@@ -30,7 +30,15 @@
                 to allow stacking multiple ranges of redshifts, rather than having to choose only one range (so, for example, the 
                 ability to check multiple boxes of small ranges rather than choose only one, as it is now).
             </p>
-
+            
+            <p>
+                Usage:
+                <ul>
+                  <li>Use your mouse's scroll or the widget on the top left to zoom in and out</li>
+                  <li>Hover over the layers widget on the top right to switch redshift ranges</li>
+                  <li>Click on any of the markers to view more information</li>
+                </ul>
+            </p>
         </div>
 
         <div id="right-container", class="container">
@@ -79,9 +87,9 @@
             L.control.layers(redshiftLayers, null).addTo(MRSmap);
             MRSmap.setView( [0, 0], 1.25);
 
-            L.marker(L.latLng(90, 0)).addTo(MRSmap).bindPopup('Example marker');
-            L.marker(L.latLng(0, 0)).addTo(MRSmap).bindPopup('Example marker');
-            L.marker(L.latLng(-60, -30)).addTo(MRSmap).bindPopup('Example marker');
+            L.marker(L.latLng(90, 0)).addTo(MRSmap).bindPopup('Point at (0, 90).');
+            L.marker(L.latLng(0, 0)).addTo(MRSmap).bindPopup('Origin, (0, 0).');
+            L.marker(L.latLng(-60, -30)).addTo(MRSmap).bindPopup('Random marker.');
 
         </script>
         
