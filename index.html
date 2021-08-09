@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="./style.css" />
-
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Midterm Demo</title>
+        <title>Celestial Cartography</title>
 
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""/>
         
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+        <script src="./celestial_objects_geoJSON.js" type="text/javascript"></script>
+
+        <link rel="stylesheet" href="./style.css" />
+        <script src="./script.js" defer></script>   
+
     </head>
 
+
     <body>
+
+        <!-- <div id="northMap", style="height: 500px"></div> -->
+
         <div id="left-container", class="container">
             <h1>
                 Heyo! Thanks for coming here to take a look at some of my experiments/progress.
@@ -34,56 +42,24 @@
         </div>
 
         <div id="right-container", class="container">
-            <div id="2MRSmap", style="height: 400px; width: 775px"></div>
+             <!-- <div id="mainMap", style="height: 100%; width: 70%"></div> -->
+            <select id="selection-menu" onchange="change_div(this.value)">
+                <option value="northpole" selected>North Pole</option>
+                <option value="southpole">South Pole</option>
+                <option value="primemeridian">Meridian</option>
+                <option value="antimeridian">Anti-meridian</option>
+                <option value="offaxis">Off Axis</option>
+                <option value="antioffaxis">Anti-Off Axis</option>
+            </select> 
+            
+            <div id="northpoleMap" class="map"></div>
+            <div id="southpoleMap" class="map"></div>
+            <div id="primemeridianMap" class="map"></div>
+            <div id="antimeridianMap" class="map"></div>
+            <div id="offaxisMap" class="map"></div>
+            <div id="antioffaxisMap" class="map"></div>
+
         </div>
-        <script>
-            var MRSmap = L.map('2MRSmap', {
-            crs: L.CRS.Simple, // simple square grid, need to finure out some curvy grid
-            minZoom: -5,
-            layers: background
-            });
-
-            var bounds = [[-100, -195], [100, 195]]; 
-            var background = L.imageOverlay('./images/LongLat_projected.png', bounds).addTo(MRSmap);
-            MRSmap.fitBounds(bounds);
-
-            var LayerBounds = [[-92, -185], [92, 185]];
-            var l1 = L.imageOverlay('./images/2MRS.0_z_0.01.smooth.png', LayerBounds);
-            var l2 = L.imageOverlay('./images/2MRS.0.01_z_0.02.smooth.png', LayerBounds);
-            var l3 = L.imageOverlay('./images/2MRS.0.02_z_0.03.smooth.png', LayerBounds);
-            var l4 = L.imageOverlay('./images/2MRS.0.03_z_0.04.smooth.png', LayerBounds);
-            var l5 = L.imageOverlay('./images/2MRS.0.04_z_0.05.smooth.png', LayerBounds);
-            var l6 = L.imageOverlay('./images/2MRS.0.05_z_0.06.smooth.png', LayerBounds);
-            var l7 = L.imageOverlay('./images/2MRS.0.06_z_0.07.smooth.png', LayerBounds);
-            var l8 = L.imageOverlay('./images/2MRS.0.07_z_0.08.smooth.png', LayerBounds);
-            var l9 = L.imageOverlay('./images/2MRS.0.08_z_0.09.smooth.png', LayerBounds);
-
-            var all = L.imageOverlay('./images/2MRS_map_all.jpg', LayerBounds);
-            var all_smooth = L.imageOverlay('./images/2MRS_map_all_smoothed.jpg', LayerBounds);
-
-            var redshiftLayers = {
-                "blank": background,
-                "0.00 < z < 0.01": l1,
-                "0.01 < z < 0.02": l2,
-                "0.02 < z < 0.03": l3,
-                "0.03 < z < 0.04": l4,
-                "0.04 < z < 0.05": l5,
-                "0.05 < z < 0.06": l6,
-                "0.06 < z < 0.07": l7,
-                "0.07 < z < 0.08": l8,
-                "0.08 < z < 0.09": l9,
-                "0.00 < z < 0.20": all,
-                "0.00 < z < 0.20, smoothed": all_smooth
-            };
-
-            L.control.layers(redshiftLayers, null).addTo(MRSmap);
-            MRSmap.setView( [0, 0], 1.25);
-
-            L.marker(L.latLng(90, 0)).addTo(MRSmap).bindPopup('Example marker');
-            L.marker(L.latLng(0, 0)).addTo(MRSmap).bindPopup('Example marker');
-            L.marker(L.latLng(-60, -30)).addTo(MRSmap).bindPopup('Example marker');
-
-        </script>
         
-    </body>
+    </body> 
 </html>
