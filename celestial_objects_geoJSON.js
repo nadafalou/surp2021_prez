@@ -98,3 +98,107 @@ var objects = {
         }
     ]
 };
+
+var globular_clusters = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "popupContent": "Pal 5"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [0.8389, 45.856] // in geoJSON it's [x, y] while in leaflet it's (y, x)=latlng
+            }
+        },{
+            "type": "Feature",
+            "properties": {
+                "popupContent": "NGC 5466"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [43.8, 74]
+            }
+        },{
+            "type": "Feature",
+            "properties": {
+                "popupContent": "NGC 288"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [129, -89]
+            }
+        },{
+            "type": "Feature",
+            "properties": {
+                "popupContent": "Pal 15"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [19, 24]
+            }
+        },{
+            "type": "Feature",
+            "properties": {
+                "popupContent": "Ter 4"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [356, 2]
+            }
+        }
+    ]
+};
+
+var stars = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "popupContent": "Sirius"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [266, -8.6] // in geoJSON it's [x, y] while in leaflet it's (y, x)=latlng
+            }
+        },{
+            "type": "Feature",
+            "properties": {
+                "popupContent": "Vega"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [66, 20]
+            }
+        },{
+            "type": "Feature",
+            "properties": {
+                "popupContent": "Betelgeuse"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [200, -8]
+            }
+        },{
+            "type": "Feature",
+            "properties": {
+                "popupContent": "Altair"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [48, -11]
+            }
+        },{
+            "type": "Feature",
+            "properties": {
+                "popupContent": "Deneb"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [84, 1.7]
+            }
+        }
+    ]
+};
